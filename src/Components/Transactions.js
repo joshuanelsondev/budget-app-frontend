@@ -7,7 +7,6 @@ export default function Transactions({ transactions, setTransactions }) {
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/transactions`).then((res) => {
-            console.log(res.data)
             setTransactions(res.data);
         }).catch((error) => {
             console.log(error);

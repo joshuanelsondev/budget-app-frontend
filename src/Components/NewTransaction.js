@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import {  v4 as generateId } from "uuid";
 import axios from "axios";
 
-export default function New() {
+export default function NewTransaction() {
   const [transaction, setTransaction] = useState({
     id: "",
     date: "",

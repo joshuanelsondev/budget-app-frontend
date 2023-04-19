@@ -5,11 +5,12 @@ import axios from "axios";
 export default function TransactionDetails() {
     const [transaction, setTransaction] = useState({});
     const navigate = useNavigate();
-    let { id } = useParams;
-
+    let { id } = useParams();
+    console.log(id)
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
             .then((res) => {
+
                 setTransaction(res.data);
             }).catch(() => {
                 navigate("/not-found");
@@ -25,17 +26,37 @@ export default function TransactionDetails() {
     };
 
     return (
-        <div>
-            <div>
-                <h1>{transaction.item_name}</h1>
-                <li>{transaction.amount}</li>
-                <li>{transaction.date}</li>
-                <li>{transaction.from}</li>
-                <li>{transaction.category}</li>
-            </div>
-            <Link to={"/transactions"}>BACK</Link>
-            <Link to={"/transactions/edit"}>EDIT</Link>
-            <button onClick={handleDelete}>DELETE</button>
+      <div className="flex flex-col rounded-lg w-8/12 mt-8 ">
+        <div className="flex flex-col gap-4 p-4">
+          <h1 className="text-4xl">{transaction.item_name}</h1>
+          <h2 className="border-b pb-4">
+            <span className="font-bold">Amount: </span> 
+            {`$${transaction.amount}`}
+          </h2>
+          <h2 className="border-b pb-4"><span className="font-bold">Date: </span>{transaction.date}</h2>
+          <h2 className="border-b pb-4"><span className="font-bold">From: </span>{transaction.from}</h2>
+          <h2 className="border-b pb-4"><span className="font-bold">Category: </span>{transaction.category}</h2>
         </div>
-    )
+        <div className="flex justify-center gap-8 mt-8">
+          <Link
+            className="border rounded-lg text-sm py-2 px-4 hover:bg-primary "
+            to={"/transactions"}
+          >
+            BACK
+          </Link>
+          <Link
+            className="border rounded-lg text-sm py-2 px-4 hover:bg-primary "
+            to={"/transactions/:id/edit"}
+          >
+            EDIT
+          </Link>
+          <button
+            className="border rounded-lg text-sm py-2 px-4 hover:bg-primary "
+            onClick={handleDelete}
+          >
+            DELETE
+          </button>
+        </div>
+      </div>
+    );
 }
