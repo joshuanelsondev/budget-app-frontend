@@ -4,9 +4,9 @@ import Transactions from "../Components/Transactions";
 export default function Index() {
   const [transactions, setTransactions] = useState([]);
 
-  const total = transactions.reduce((total, transaction) => {
+  const total = transactions ? transactions.reduce((total, transaction) => {
     return total + Number(transaction.amount)
-  }, 0) || 0
+  }, 0) : ;0
   return (
 
     <div className="flex flex-col mt-8 gap-8 w-8/12 min-w-[700px]">
