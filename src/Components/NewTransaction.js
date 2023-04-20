@@ -20,7 +20,6 @@ export default function NewTransaction() {
       axios
         .post(`${process.env.REACT_APP_API_URL}/transactions`, transaction)
         .then(() => {
-          console.log(transaction);
           navigate("/transactions");
         })
         .catch((error) => {
@@ -31,18 +30,13 @@ export default function NewTransaction() {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const unformattedDate = new Date(transaction.date);
-    const month = unformattedDate.toLocaleString("default", { month: "long" });
-    const day = unformattedDate.getDate();
-    const date = `${month} ${day}`;
+    
     setTransaction(({
       ...transaction,
-      date: date,
       id: generateId(),
     }))
-  }
+  };
   
-
   const handleTextChange = (event) => {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };

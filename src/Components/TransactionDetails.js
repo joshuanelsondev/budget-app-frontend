@@ -6,7 +6,7 @@ export default function TransactionDetails() {
     const [transaction, setTransaction] = useState({});
     const navigate = useNavigate();
     let { id } = useParams();
-    console.log(id)
+    
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
             .then((res) => {
