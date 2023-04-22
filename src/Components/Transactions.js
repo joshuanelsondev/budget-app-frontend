@@ -3,6 +3,7 @@ import axios from "axios";
 import Transaction from "./Transaction";
 
 export default function Transactions({ transactions, setTransactions, setTotal }) {
+
     const calculateTotal = (transactions) => {
         return transactions.reduce((total, transaction) => {
             return total + Number(transaction.amount);
@@ -20,6 +21,7 @@ export default function Transactions({ transactions, setTransactions, setTotal }
     
     return (
         <div className="flex flex-col items-between mx-16">
+            {console.log(transactions)}
             {transactions && transactions.map(transaction => {
                 return <Transaction key={transaction.id} transaction={transaction} />
             })}

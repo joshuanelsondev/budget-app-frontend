@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function TransactionDetails() {
-    const [transaction, setTransaction] = useState({});
+    const [transaction, setTransaction] = useState([]);
     const navigate = useNavigate();
     let { id } = useParams();
     
