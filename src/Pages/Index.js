@@ -3,7 +3,7 @@ import Transactions from "../Components/Transactions";
 
 export default function Index() {
   const [transactions, setTransactions] = useState([]);
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
 
  
   return (

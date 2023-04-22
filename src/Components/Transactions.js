@@ -4,10 +4,9 @@ import Transaction from "./Transaction";
 
 export default function Transactions({ transactions, setTransactions, setTotal }) {
     const calculateTotal = (transactions) => {
-    console.log(transactions);
-    return transactions.reduce((total, transaction) => {
-        return total + Number(transaction.amount);
-    }, 0);
+        return transactions.reduce((total, transaction) => {
+            return total + Number(transaction.amount);
+        }, 0);
     }; 
 
     useEffect(() => {
@@ -21,7 +20,7 @@ export default function Transactions({ transactions, setTransactions, setTotal }
     
     return (
         <div className="flex flex-col items-between mx-16">
-            {transactions.map(transaction => {
+            {transactions && transactions.map(transaction => {
                 return <Transaction key={transaction.id} transaction={transaction} />
             })}
         </div>

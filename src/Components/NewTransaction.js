@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {  v4 as generateId } from "uuid";
 import axios from "axios";
 
 export default function NewTransaction() {
   const [transaction, setTransaction] = useState({
-    id: "",
+    id: generateId(),
     date: "",
     item_name: "",
     amount: "",
@@ -14,27 +14,17 @@ export default function NewTransaction() {
   })
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (transaction.id) {
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/transactions`, transaction)
-        .then(() => {
-          navigate("/transactions");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [transaction, navigate])
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    setTransaction(({
-      ...transaction,
-      id: generateId(),
-    }))
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/transactions`, transaction)
+      .then(() => {
+        navigate("/transactions");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   
   const handleTextChange = (event) => {
