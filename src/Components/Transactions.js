@@ -11,13 +11,14 @@ export default function Transactions({ transactions, setTransactions, setTotal }
     }; 
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/transactions`).then((res) => {
-            console.log(res.data, "test")
-            setTransactions(res.data);
-            setTotal(calculateTotal(res.data))
-        }).catch((error) => {
-            console.log(error);
-        });
+        axios.get(`${process.env.REACT_APP_API_URL}/transactions`)
+            .then((res) => {
+                console.log(res.data, "test")
+                setTransactions(res.data);
+                setTotal(calculateTotal(res.data))
+            }).catch((error) => {
+                console.log(error);
+            });
     }, [setTransactions, setTotal]);   
     
     return (

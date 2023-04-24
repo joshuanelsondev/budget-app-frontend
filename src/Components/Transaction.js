@@ -16,14 +16,14 @@ export default function Transaction({ transaction }) {
       </p>
       <Link
         to={`/transactions/${transaction.id}`}
-        className="text-link font-semibold justify-self-start border-b border-gray pb-4 w-full hover:underline underline-offset-2"
+        className="text-link font-semibold justify-self-start border-b border-gray pb-4 w-full"
       >
-        {transaction.item_name}
+        <span className="hover:underline underline-offset-2">
+          {transaction.item_name}
+        </span>
       </Link>
       <div className="border-b border-gray w-16 flex justify-end">
-        <p className="text-dark pb-4">
-          {`$${transaction.amount}`}
-        </p>
+        <p className="text-dark pb-4">{`$${transaction.amount}`}</p>
       </div>
     </div>
   );
