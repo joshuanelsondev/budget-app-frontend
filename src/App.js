@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
 import Index from "./Pages/Index";
-import NewTransaction from "./Components/NewTransaction";
+import New from "./Pages/New";
 
 
 // COMPONENTS
@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/transactions" element={<Index />} />
-            <Route path="/transactions/new" element={<NewTransaction />} />
+            <Route path="/transactions/new" element={<New />} />
             <Route path="/transactions/:id" element={<TransactionDetails />} />
             <Route path="/transactions/:id/edit" element={<EditTransaction />} />
             <Route path="*" element={<FourOFour />} />
