@@ -11,13 +11,13 @@ export default function NewTransaction() {
     amount: "",
     from: "",
     category: ""
-  })
+  });
 
   const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
+    await axios
       .post(`${process.env.REACT_APP_API_URL}/transactions`, transaction)
       .then(() => {
         navigate("/transactions");

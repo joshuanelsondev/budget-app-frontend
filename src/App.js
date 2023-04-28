@@ -6,12 +6,13 @@ import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
 import Index from "./Pages/Index";
 import New from "./Pages/New";
+import Edit from "./Pages/Edit";
 
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
 import TransactionDetails from "./Components/TransactionDetails";
-import EditTransaction from "./Components/EditTransaction";
+
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
             <Route path="/transactions" element={<Index />} />
             <Route path="/transactions/new" element={<New />} />
             <Route path="/transactions/:id" element={<TransactionDetails />} />
-            <Route path="/transactions/:id/edit" element={<EditTransaction />} />
+            <Route path="/transactions/:id/edit" element={<Edit />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>
       </Router>

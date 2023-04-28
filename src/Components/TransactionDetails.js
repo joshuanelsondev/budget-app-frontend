@@ -6,7 +6,7 @@ export default function TransactionDetails() {
     const [transaction, setTransaction] = useState([]);
     const navigate = useNavigate();
     let { id } = useParams();
-    
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
             .then((res) => {
@@ -46,7 +46,7 @@ export default function TransactionDetails() {
           </Link>
           <Link
             className="border rounded-lg text-sm py-2 px-4 hover:bg-primary "
-            to={"/transactions/:id/edit"}
+            to={`/transactions/${id}/edit`}
           >
             EDIT
           </Link>
